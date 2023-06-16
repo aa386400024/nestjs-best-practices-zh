@@ -1,14 +1,14 @@
-# Debug
+# 调试
 
-`DebugModule` registers a decorator that outputs logs along with the execution time in all methods of the `controllers` and `providers` of the module (including import module) to which the `@Debug` decorator is applied. \
-Instead of adding a log to every method one by one, you can leave a log of execution of all methods with one decorator. \
-It can also be applied only to specific classes or methods.
+`DebugModule` 注册了一个装饰器，用于在应用到 `@Debug` 装饰器的模块的所有 `controllers` 和 `providers` 的方法中输出日志以及执行时间。 \
+通过使用一个装饰器，你可以在所有方法中留下执行日志，而不需要逐个方法添加日志。 \
+它也可以仅应用于特定的类或方法。
 
-## Usage
+## 使用方法
 
-See the [sample](./sample) folder for examples.
+请参考 [sample](./sample) 文件夹中的示例。
 
-### Module
+### 模块
 
 ```ts
 @Debug('ModuleContext')
@@ -20,18 +20,18 @@ See the [sample](./sample) folder for examples.
 export class AppModule {}
 ```
 
-To exclude a specific class within a module
+要在模块中排除特定的类
 
 ```ts
 @Debug({ context: 'ModuleContext', exclude: [AppService] })
-// OR
+// 或者
 DebugModule.forRoot({ exclude: ['SampleService'] })
 ```
 
-### Class
+### 类
 
-You don't need to import `DebugModule` and `@Debug` when using it in class. It works as a separate decorator. \
-Registering `@DebugLog` in a class applies to all methods in the class, so there is no need to register `@DebugLog` in a method.
+当在类中使用时，你无需导入 `DebugModule` 和 `@Debug`。它作为一个独立的装饰器工作。 \
+在类中注册 `@DebugLog` 将应用于类中的所有方法，因此不需要在方法中注册 `@DebugLog`。
 
 ```ts
 @Controller()
@@ -43,12 +43,12 @@ export class AppController {
 }
 ```
 
-## Logging
+## 日志记录
 
-See [Logger](./debug-log.decorator.ts#L15-L21) to edit log format.
+请参考 [Logger](./debug-log.decorator.ts#L15-L21) 来编辑日志格式。
 
-Example of log output of [step](./sample/sample.controller.ts#L16) method \
+[step](./sample/sample.controller.ts#L16) 方法的日志输出示例 \
 ![step](https://user-images.githubusercontent.com/1300172/179880495-dea3c467-0088-40a9-b44a-150b4166a081.png)
 
-Example of log output of [chain](./sample/sample.controller.ts#L24) method \
+[chain](./sample/sample.controller.ts#L24) 方法的日志输出示例 \
 ![chain](https://user-images.githubusercontent.com/1300172/179880502-a84157f9-38dc-45d6-a2c9-34e3be85f0a6.png)
