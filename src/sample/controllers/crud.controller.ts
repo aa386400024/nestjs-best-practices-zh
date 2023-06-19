@@ -1,3 +1,8 @@
+/**
+ * 文件作用：这个文件定义了CrudController类，该类定义了一些HTTP请求处理方法，用于处理针对/crud路径的GET、POST、PUT和DELETE请求。
+ */
+
+// 导入相关模块和类
 import { Body, Controller, Get, Param, Post, Put, Delete,
   NotFoundException, InternalServerErrorException, ParseIntPipe } from '@nestjs/common';
 
@@ -6,42 +11,42 @@ import { CreateDto, UpdateDto } from '../dto';
 import { CrudService } from '../providers';
 
 /**
- * route /test/crud/*
+ * 路由 /test/crud/*
  */
-@Controller('crud')
+@Controller('crud') // 控制器装饰器，定义了这个类对应的路由路径
 export class CrudController {
-  constructor(private crud: CrudService) {}
+  constructor(private crud: CrudService) {} // 注入CrudService
 
-  @Get(':id') // GET http://localhost:3000/test/crud/:id
-  public async read(@Param('id', ParseIntPipe) id: number): Promise<Sampletable1> {
-    const result = await this.crud.read(id);
-    if (!result) {
+  @Get(':id') // Get装饰器，定义了对应的HTTP请求方法和路由参数
+  public async read(@Param('id', ParseIntPipe) id: number): Promise<Sampletable1> { // 对应的请求处理方法
+    const result = await this.crud.read(id); // 调用CrudService的read方法
+    if (!result) { // 如果没有找到对应的数据，则抛出NotFoundException
       throw new NotFoundException('NotFoundData');
     }
 
     return result;
   }
 
-  @Post() // POST http://localhost:3000/test/crud
-  public async create(@Body() body: CreateDto): Promise<{ id: number }> {
-    const result = await this.crud.create(body);
-    if (!result.id) {
+  @Post() // Post装饰器，定义了对应的HTTP请求方法
+  public async create(@Body() body: CreateDto): Promise<{ id: number }> { // 对应的请求处理方法
+    const result = await this.crud.create(body); // 调用CrudService的create方法
+    if (!result.id) { // 如果创建失败，则抛出InternalServerErrorException
       throw new InternalServerErrorException('NotCreatedData');
     }
 
     return { id: result.id };
   }
 
-  @Put(':id') // PUT http://localhost:3000/test/crud/:id
-  public async update(@Param('id', ParseIntPipe) id: number, @Body() body: UpdateDto): Promise<{ success: boolean }> {
-    const result = await this.crud.update(id, body);
+  @Put(':id') // Put装饰器，定义了对应的HTTP请求方法和路由参数
+  public async update(@Param('id', ParseIntPipe) id: number, @Body() body: UpdateDto): Promise<{ success: boolean }> { // 对应的请求处理方法
+    const result = await this.crud.update(id, body); // 调用CrudService的update方法
 
     return { success: !!result.affected };
   }
 
-  @Delete(':id') // DELETE http://localhost:3000/test/crud/:id
-  public async remove(@Param('id', ParseIntPipe) id: number): Promise<{ success: boolean }> {
-    const result = await this.crud.remove(id);
+  @Delete(':id') // Delete装饰器，定义了对应的HTTP请求方法和路由参数
+  public async remove(@Param('id', ParseIntPipe) id: number): Promise<{ success: boolean }> { // 对应的请求处理方法
+    const result = await this.crud.remove(id); // 调用CrudService的remove方法
 
     return { success: !!result.affected };
   }
