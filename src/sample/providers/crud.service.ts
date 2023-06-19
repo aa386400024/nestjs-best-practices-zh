@@ -3,17 +3,17 @@
  */
 
 // 导入相关模块和类
-import { Injectable } from '@nestjs/common';  // NestJS 的装饰器，表示这个类可以被注入到其他类中
-import { InjectRepository } from '@nestjs/typeorm';  // NestJS 的装饰器，用于注入Repository对象
-import { Repository, UpdateResult, DeleteResult } from 'typeorm';  // TypeORM 的类和类型
+import { Injectable } from '@nestjs/common'; // NestJS 的装饰器，表示这个类可以被注入到其他类中
+import { InjectRepository } from '@nestjs/typeorm'; // NestJS 的装饰器，用于注入Repository对象
+import { Repository, UpdateResult, DeleteResult } from 'typeorm'; // TypeORM 的类和类型
 
-import { Sampletable1 } from '#entity/sampledb1';  // 数据表对应的实体类
+import { Sampletable1 } from '#entity/sampledb1'; // 数据表对应的实体类
 
-@Injectable()  // 将这个类标记为可注入的服务
+@Injectable() // 将这个类标记为可注入的服务
 export class CrudService {
   constructor(
-    @InjectRepository(Sampletable1)  // 使用装饰器注入数据表对应的 Repository 对象
-    private table: Repository<Sampletable1>,  // 声明并初始化私有变量
+    @InjectRepository(Sampletable1) // 使用装饰器注入数据表对应的 Repository 对象
+    private table: Repository<Sampletable1>, // 声明并初始化私有变量
   ) {}
 
   // 创建数据的方法
