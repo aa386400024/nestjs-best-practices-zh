@@ -1,38 +1,91 @@
 {
   "compilerOptions": {
+    // 设置 TypeScript 代码解析的基础路径
     "baseUrl": ".",
+
+    // 设置 TypeScript 代码中特定模块的路径映射
     "paths": {
       // https://docs.nestjs.com/cli/scripts#build
       // https://nodejs.org/api/packages.html#imports
-      "#entity/*": ["./src/entity/*"],
+      "#entity/*": ["./src/entity/*"]
     },
+
+    // 设置 TypeScript 编译后的 JavaScript 版本
     "target": "ES2019",
+
+    // 设置 TypeScript 编译后的代码输出目录
     "outDir": "dist",
+
+    // 设置 TypeScript 编译后的模块系统类型
     "module": "commonjs",
+
+    // 设置模块解析策略
     "moduleResolution": "node",
+
+    // 启用增量编译
     "incremental": true,
+
+    // 生成对应的 .d.ts 文件
     "declaration": true,
+
+    // 使用 LF 作为新行字符
     "newLine": "lf",
+
+    // 启用所有严格类型检查选项
     "strict": true, //= alwaysStrict, strictNullChecks, strictBindCallApply, strictFunctionTypes, strictPropertyInitialization, noImplicitAny, noImplicitThis, useUnknownInCatchVariables
+
+    // 禁止使用不可达代码
     "allowUnreachableCode": false,
+
+    // 禁止使用未使用的标签
     "allowUnusedLabels": false,
-    // "exactOptionalPropertyTypes": true,
+
+    // 检查不使用的引入
     "importsNotUsedAsValues": "error",
+
+    // 在 switch 语句中禁止空的 fallthrough 情况
     "noFallthroughCasesInSwitch": true,
+
+    // 禁止对不重写的方法进行重写
     "noImplicitOverride": true,
+
+    // 禁止函数没有返回值时的隐式 any 返回类型
     "noImplicitReturns": true,
+
+    // 在索引签名中禁止使用属性访问
     "noPropertyAccessFromIndexSignature": true,
-    // "noUncheckedIndexedAccess": true,
+
+    // 检查没有使用的局部变量
     "noUnusedLocals": true,
+
+    // 检查没有使用的函数参数
     "noUnusedParameters": true,
+
+    // 移除注释
     "removeComments": true,
+
+    // 生成源映射文件
     "sourceMap": true,
+
+    // 强制使用一致的文件名大小写
     "forceConsistentCasingInFileNames": true,
+
+    // 启用装饰器
     "experimentalDecorators": true,
+
+    // 输出装饰器的元数据
     "emitDecoratorMetadata": true, // https://github.com/Microsoft/TypeScript/issues/2577
+
+    // 启用 CommonJS 和 ES Module 之间的互操作性
     "esModuleInterop": true,
+
+    // 跳过类型检查的库文件检查
     "skipLibCheck": true
   },
+
+  // 需要编译的文件列表
   "include": ["typings/global.d.ts", "src/**/*", "test/**/*", "bin/**/*"],
+
+  // 不需要编译的文件列表
   "exclude": ["node_modules"]
 }

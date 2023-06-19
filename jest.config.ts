@@ -1,3 +1,11 @@
+/*
+ * @Author: zcl 41391477@qq.com
+ * @Date: 2023-06-15 20:12:03
+ * @LastEditors: zcl 41391477@qq.com
+ * @LastEditTime: 2023-06-19 13:42:16
+ * @FilePath: \nestjs-project-structure\jest.config.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 /* eslint-disable import/no-default-export, max-len */
 import type { Config } from 'jest';
 
@@ -16,6 +24,7 @@ const jestConfig: Config = {
   // cacheDirectory: "/private/var/folders/hx/d5nhg4153c10j_4mb893l3lm0000gp/T/jest_dy",
 
   // Automatically clear mock calls, instances, contexts and results before every test
+  // 清除每次测试时的模拟调用，实例，上下文和结果
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
@@ -25,6 +34,7 @@ const jestConfig: Config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
+  // Jest 应该在哪里输出它的覆盖率文件
   coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
@@ -33,6 +43,7 @@ const jestConfig: Config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
+  // 指示哪个提供者应该被用来为覆盖率描绘代码
   coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
@@ -90,6 +101,7 @@ const jestConfig: Config = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
+  // 用于模块名称映射的映射
   moduleNameMapper: {
     '#(.*)': '<rootDir>/src/$1',
   },
@@ -104,6 +116,7 @@ const jestConfig: Config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
+  // Jest 的配置基础
   preset: 'ts-jest',
 
   // Run tests from one or more projects
@@ -136,6 +149,7 @@ const jestConfig: Config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
+  // 在每次测试之前运行一些代码以配置或设置测试环境的模块的路径
   setupFiles: ['dotenv/config'],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
@@ -148,6 +162,7 @@ const jestConfig: Config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
+  // 用于测试的环境
   testEnvironment: 'node',
 
   // Options that will be passed to the testEnvironment
@@ -157,6 +172,7 @@ const jestConfig: Config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
+  // Jest 用来检测测试文件的 glob 模式
   testMatch: [
     // "**/__tests__/**/*.[jt]s?(x)",
     // "**/?(*.)+(spec|test).[tj]s?(x)"
@@ -164,6 +180,7 @@ const jestConfig: Config = {
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
+  // 匹配的所有测试路径的正则表达式模式字符串数组，匹配的测试将被跳过
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
@@ -178,10 +195,11 @@ const jestConfig: Config = {
 
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
-
+  // 测试超时时间（毫秒）
   testTimeout: 30000,
 
   // A map from regular expressions to paths to transformers
+  // 从正则表达式到转换器路径的映射
   transform: {
     '^.+\\.tsx?$': ['ts-jest', {
       tsconfig: 'tsconfig.json',
