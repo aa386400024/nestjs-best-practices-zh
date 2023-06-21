@@ -1,3 +1,4 @@
+// 导入NestJS和其他库中的必要模块
 import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER, APP_PIPE, RouterModule } from '@nestjs/core';
@@ -5,6 +6,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { LoggerModule } from 'nestjs-pino';
 
+// 导入自定义的模块
 import { BaseModule } from './base';
 import { CommonModule, ExceptionsFilter } from './common';
 import { configuration, loggerOptions } from './config';
@@ -12,6 +14,7 @@ import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
 
+// 主应用模块
 @Module({
   imports: [
     // 引入pino日志库来记录日志，帮助跟踪和诊断应用程序行为
@@ -46,13 +49,12 @@ import { SampleModule } from './sample';
     DebugSampleModule,
     // RouterModule允许您在应用程序级别控制路由
     // https://docs.nestjs.com/recipes/router-module
-    RouterModule.register([{
-      path: 'test',
-      module: SampleModule,
-    }, {
-      path: 'test',
-      module: DebugSampleModule,
-    }]),
+    RouterModule.register([
+      {
+        path: 'test',
+        module: process.env.NODE_ENV === 'production' ? SampleModule : DebugSampleModule,
+      },
+    ]),
   ],
   providers: [
     // 守卫是Nestjs中用来决定是否可以处理请求的一种方法
