@@ -13,6 +13,7 @@ import { configuration, loggerOptions } from './config';
 import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
 import { SampleModule } from './sample';
+import { OpenaiModule } from './openai';
 
 // 主应用模块
 @Module({
@@ -45,6 +46,7 @@ import { SampleModule } from './sample';
     CommonModule, // 全局功能模块
     BaseModule,
     SampleModule,
+    OpenaiModule,
     GqlModule,
     DebugSampleModule,
     // RouterModule允许您在应用程序级别控制路由
@@ -54,6 +56,10 @@ import { SampleModule } from './sample';
         path: 'test',
         module: process.env.NODE_ENV === 'production' ? SampleModule : DebugSampleModule,
       },
+      {
+        path: 'openai',
+        module: OpenaiModule
+      }
     ]),
   ],
   providers: [
