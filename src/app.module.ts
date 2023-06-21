@@ -12,8 +12,8 @@ import { CommonModule, ExceptionsFilter } from './common';
 import { configuration, loggerOptions } from './config';
 import { SampleModule as DebugSampleModule } from './debug';
 import { GqlModule } from './gql';
-import { SampleModule } from './sample';
 import { OpenaiModule } from './openai';
+import { SampleModule } from './sample';
 
 // 主应用模块
 @Module({
@@ -56,10 +56,6 @@ import { OpenaiModule } from './openai';
         path: 'test',
         module: process.env.NODE_ENV === 'production' ? SampleModule : DebugSampleModule,
       },
-      {
-        path: 'openai',
-        module: OpenaiModule
-      }
     ]),
   ],
   providers: [
